@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ryan Ghertner Ceramics</title>
+    <link rel="icon" type="image/png" href="Bowls.jpg"> 
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/gsap.min.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <div class="nav-container">
+        <nav>
+            <a href="index.html" class="logo">Ryan Ghertner Ceramics</a>
+            <div class="nav-links">
+                <a href="index.html" class="active">Home</a>
+                <a href="buy.html">Buy</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+                <a href="custom.html">Custom Orders</a>
+                <a href="newsletter.html">Newsletter</a>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Image Carousel -->
+        <div class="carousel-container">
+            <button class="carousel-button prev">&#10094;</button>
+            <div class="carousel">
+                <img src="home10.jpg" alt="Ceramic Work 1" class="carousel-image active">
+                <img src="home14.jpg" alt="Ceramic Work 2" class="carousel-image">
+                <img src="home13.png" alt="Ceramic Work 3" class="carousel-image">
+                <img src="home4.jpg" alt="Ceramic Work 4" class="carousel-image">
+                <img src="home11.jpg" alt="Ceramic Work 5" class="carousel-image">
+            </div>
+            <button class="carousel-button prev">
+                <img src="arrow_back_left_icon.png" alt="Previous" class="arrow-icon">
+            </button>
+            <button class="carousel-button next">
+                <img src="arrow_next_right_icon.png" alt="Next" class="arrow-icon">
+            </button>
+        </div>
+
+        <!-- Website Description -->
+        <section class="description-section">
+            <p>Welcome to Ryan Ghertner Ceramics, where artistry meets functionality in every handcrafted piece. Our collection showcases unique ceramic works that blend traditional techniques with contemporary design. Each piece is carefully crafted to bring beauty and elegance to your everyday life. Explore our collections, commission custom pieces, and join our community of ceramic enthusiasts.</p>
+        </section>
+
+        <!-- Social Media Links -->
+        <div class="social-links">
+            <a href="https://www.instagram.com/ryanghertner/" target="_blank" rel="noopener noreferrer" class="social-button instagram">
+                <img src="instagram logo_icon.png" alt="Instagram Icon">
+                Follow On Instagram
+            </a>
+            <a href="https://www.youtube.com/@ryanghertner" target="_blank" rel="noopener noreferrer" class="social-button youtube">
+                <img src="youtube logo_icon.png" alt="YouTube Icon">
+                Subscribe On Youtube
+            </a>
+        </div>
+    </main>
+
+    <style>
+        /* Carousel Styles */
+        .carousel-container {
+            position: relative;
+            max-width: 1200px;
+            margin: 80px auto 2rem;
+            height: 600px;
+            overflow: hidden;
+        }
+
+        .carousel {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .carousel-image {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .carousel-image.active {
+            opacity: 1;
+        }
+
+        .carousel-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.7);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 2;
+            transition: background-color 0.3s ease;
+        }
+
+        .carousel-button:hover {
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .prev {
+            left: 20px;
+        }
+
+        .next {
+            right: 20px;
+        }
+
+        /* Description Section */
+        .description-section {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            text-align: center;
+            line-height: 1.8;
+            color: #333;
+        }
+
+        /* Social Media Buttons */
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 3rem auto;
+            padding: 0 1rem;
+        }
+
+        .social-button {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            color: white;
+            font-weight: 500;
+            transition: transform 0.3s ease;
+        }
+
+        .social-button:hover {
+            transform: translateY(-2px);
+        }
+
+        .instagram {
+            background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
+        }
+
+        .youtube {
+            background: #FF0000;
+        }
+
+        .social-button img {
+            width: 24px;
+            height: 24px;
+        }
+
+        @media (max-width: 768px) {
+            .carousel-container {
+                height: 400px;
+                margin: 60px auto 1rem;
+            }
+
+            .social-links {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const carousel = document.querySelector('.carousel');
+            const images = document.querySelectorAll('.carousel-image');
+            const prevButton = document.querySelector('.prev');
+            const nextButton = document.querySelector('.next');
+            let currentIndex = 0;
+            let intervalId;
+
+            // Function to show specific image
+            function showImage(index) {
+                images.forEach(img => img.classList.remove('active'));
+                currentIndex = (index + images.length) % images.length;
+                images[currentIndex].classList.add('active');
+            }
+
+            // Next button click
+            nextButton.addEventListener('click', () => {
+                showImage(currentIndex + 1);
+                resetTimer();
+            });
+
+            // Previous button click
+            prevButton.addEventListener('click', () => {
+                showImage(currentIndex - 1);
+                resetTimer();
+            });
+
+            // Auto-advance slides
+            function startTimer() {
+                intervalId = setInterval(() => {
+                    showImage(currentIndex + 1);
+                }, 5000); // Change image every 5 minutes (300000)
+            }
+
+            function resetTimer() {
+                clearInterval(intervalId);
+                startTimer();
+            }
+
+            // Start the carousel
+            startTimer();
+        });
+    </script>
+</body>
+</html>
+
+<!-- Footer -->
+<footer>
+    <p class="centered-footer">Website Created By Hari Teja Adapala &copy; All rights reserved</p>
+</footer>
+</body>
+</html>

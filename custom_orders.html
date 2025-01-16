@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Orders - Ryan Ghertner Ceramics</title>
+    <link rel="icon" type="image/png" href="Bowls.jpg"> 
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="nav-container">
+        <nav>
+            <a href="index.html" class="logo">Ryan Ghertner Ceramics</a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="buy.html">Buy</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+                <a href="custom_orders.html" class="active">Custom Orders</a>
+                <a href="newsletter.html">Newsletter</a>
+            </div>
+        </nav>
+    </div>
+    <main>
+        <section class="custom-section">
+            <div class="form-container">
+                <h2>Custom Orders</h2>
+                <p class="custom-intro">Create your perfect ceramic piece. Share your vision, and I'll bring it to life.</p>
+                <form id="custom-form" action="mailto:ryanghertner@gmail.com" method="POST" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="custom-email">Your Email</label>
+                        <input type="email" id="custom-email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="design-description">Design Description</label>
+                        <textarea id="design-description" name="description" rows="5" required 
+                            placeholder="Describe your desired ceramic piece in detail..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="reference-photos">Upload Reference Images</label>
+                        <input type="file" id="reference-photos" name="photos" multiple accept="image/*">
+                    </div>
+                    <button type="submit" class="submit-button">Submit Custom Order</button>
+                    <p class="etsy-notice">
+                        For quick acknowledgment, please also message me on my 
+                        <a href="https://www.etsy.com/shop/RyanGhertner" target="_blank" rel="noopener noreferrer" class="etsy-link">Etsy store</a>
+                        after submitting your order.
+                    </p>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+   <footer>
+    <p class="centered-footer">Website Created By Hari Teja Adapala &copy; All rights reserved</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Newsletter - Ryan Ghertner Ceramics</title>
+    <link rel="icon" type="image/png" href="Bowls.jpg"> 
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/gsap.min.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <div class="nav-container">
+        <nav>
+            <a href="index.html" class="logo">Ryan Ghertner Ceramics</a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="buy.html">Buy</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+                <a href="custom_orders.html">Custom Orders</a>
+                <a href="newsletter.html" class="active">Newsletter</a>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <section class="newsletter-section">
+            <div class="newsletter-container">
+                <div class="newsletter-image">
+                    <img src="aboutpagepic.jpg" alt="Ceramic Workshop" class="featured-image">
+                </div>
+                <div class="newsletter-content">
+                    <h2>Stay Updated</h2>
+                    <p>Subscribe to our newsletter to receive updates about new ceramic collections, upcoming workshops, and exclusive events. Join our community of ceramic enthusiasts and be the first to know about Ryan Ghertner's latest creations and exhibitions.</p>
+                    <form id="newsletter-form" class="newsletter-form">
+                        <div class="form-group">
+                            <label for="newsletter-email">Email Address</label>
+                            <input type="email" id="newsletter-email" name="email" required 
+                                   placeholder="Enter your email">
+                        </div>
+                        <button type="submit" class="subscribe-button">Subscribe To Newsletter</button>
+                    </form>
+                    <div id="subscription-message" class="subscription-message"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const newsletterForm = document.getElementById('newsletter-form');
+            const messageDiv = document.getElementById('subscription-message');
+
+            if (newsletterForm) {
+                newsletterForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const email = document.getElementById('newsletter-email').value;
+                    
+                    // Here you would typically send this to your server
+                    // For now, we'll just show a success message
+                    showMessage('Thank you for subscribing to our newsletter!', 'success');
+                    newsletterForm.reset();
+                });
+            }
+
+            function showMessage(message, type = 'success') {
+                messageDiv.textContent = message;
+                messageDiv.className = `subscription-message ${type}`;
+                messageDiv.style.display = 'block';
+                
+                setTimeout(() => {
+                    messageDiv.style.opacity = '0';
+                    setTimeout(() => {
+                        messageDiv.style.display = 'none';
+                        messageDiv.style.opacity = '1';
+                    }, 500);
+                }, 3000);
+            }
+        });
+    </script>
+
+    <style>
+        /* Additional styles specific to newsletter page */
+        .newsletter-section {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 80px auto 0;
+        }
+
+        .newsletter-container {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .newsletter-image {
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+        }
+
+        .featured-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .featured-image:hover {
+            transform: scale(1.05);
+        }
+
+        .newsletter-content {
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .newsletter-content h2 {
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            color: #333;
+        }
+
+        .newsletter-content p {
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .newsletter-form {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .newsletter-form .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .newsletter-form input[type="email"] {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .newsletter-form input[type="email"]:focus {
+            outline: none;
+            border-color: #333;
+        }
+
+        .subscribe-button {
+            background: #333;
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .subscribe-button:hover {
+            background: #555;
+            transform: translateY(-2px);
+        }
+
+        .subscription-message {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 6px;
+            display: none;
+            transition: opacity 0.5s ease;
+        }
+
+        .subscription-message.success {
+            background: #4CAF50;
+            color: white;
+        }
+
+        .subscription-message.error {
+            background: #f44336;
+            color: white;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .newsletter-section {
+                padding: 1rem;
+            }
+            
+            .newsletter-image {
+                height: 300px;
+            }
+            
+            .newsletter-content {
+                padding: 2rem 1rem;
+            }
+        }
+    </style>
+    <!-- Footer -->
+   <footer>
+    <p class="centered-footer">Website Created By Hari Teja Adapala &copy; All rights reserved</p>
+</footer>
+</body>
+</html>
